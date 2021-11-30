@@ -13,18 +13,17 @@
           ></v-text-field>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="12"
           md="4"
         >
           <v-text-field
             v-model="lastname"
-            :rules="nameRules"
-            :counter="10"
+
             label="Last name"
             required
           ></v-text-field>
-        </v-col>
+        </v-col> -->
 
         <!-- <v-col
           cols="12"

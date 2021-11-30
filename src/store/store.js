@@ -6,6 +6,12 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state : {
-        name : ""
+        author : ""
+    },
+    mutations : {
+        updateMessage (state, author) {
+            state.author = author
+            console.log(state.author)
+        }
     }
 })

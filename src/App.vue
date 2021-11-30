@@ -7,7 +7,7 @@
           cols="4"
         >
           <v-text-field
-            v-model="name"
+            v-model="author"
             label="First name"
             required
           ></v-text-field>
@@ -39,7 +39,7 @@
       </v-row>
     </v-container>
   </v-form>
-  <p>{{name }}</p>
+  <p>{{author }}</p>
   </v-app>
   
 </template>
@@ -49,6 +49,16 @@
 
 export default {
   name: 'App',
+  computed : {
+    author : {
+      get() {
+        return this.$store.state.author
+      },
+      set(value) {
+        this.$store.commit('updateMessage', value)
+      }
+    }
+  },
 
   components: {
     

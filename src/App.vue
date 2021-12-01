@@ -29,7 +29,12 @@
     </v-container>
     
   </v-form>
-  <p></p>
+  <v-container v-for="post in posts" :key="post.id">
+    <v-card>
+      <div>{{post.author}}</div>
+      <div>{{post.cathegory}}</div>
+      </v-card>
+  </v-container>
   </v-app>
 </template>
 
@@ -44,7 +49,7 @@ export default {
       postData : {
         author : '',
         cathegory: '',
-        date : new Date().toLocaleDateString('de-DE'),
+        date : new Date().toLocaleDateString(),
         content : '',
         id : ''
       },
@@ -53,6 +58,11 @@ export default {
 
   components: {
     
+  },
+  computed : {
+    posts() {
+      return this.$store.state.posts
+    }
   },
 
   

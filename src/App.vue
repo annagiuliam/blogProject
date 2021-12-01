@@ -1,48 +1,36 @@
 <template>
   <v-app>
-    <v-form v-model="valid">
-    <v-container>
-      <v-row>
+    <v-form ref="form">
+    <v-container fluid>
+      <v-row align="center"> 
+        <v-col
+          cols="4"
+          
+        >
+          <v-text-field
+           v-model="postData.author"
+            label="Authorenname"
+            required
+          ></v-text-field>
+        </v-col> 
+
         <v-col
           cols="4"
         >
-          <v-text-field
-            v-model="tempAuthor"
-            label="Name"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <!-- <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="lastname"
-
-            label="Last name"
-            required
-          ></v-text-field>
-        </v-col> -->
-
-        <!-- <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          ></v-text-field>
-        </v-col> -->
+           <v-select
+          :items="cathegories"
+          label="Kategorie"
+          v-model="postData.cathegory"
+        ></v-select>
+  </v-col> 
+        
       </v-row>
+      <v-btn @click="updateMessage">submit</v-btn>
     </v-container>
-    <v-btn @click="addAuthor">submit</v-btn>
+    
   </v-form>
-  <p>{{author }}</p>
+  <p></p>
   </v-app>
-  
 </template>
 
 <script>
@@ -52,17 +40,14 @@ export default {
   name: 'App',
   data() {
     return {
-      tempAuthor : ""
-    }
-  },
-  computed : {
-    author : {
-      get() {
-        return this.$store.state.author
+      cathegories : ['Politik', 'Natur', 'Aktuell', 'Umwelt'],
+      postData : {
+        author : '',
+        cathegory: '',
+        date : new Date().toLocaleDateString('de-DE'),
+        content : '',
+        id : ''
       },
-      // set(value) {
-      //   this.$store.commit('updateMessage', value)
-      // }
     }
   },
 
@@ -72,10 +57,17 @@ export default {
 
   
   methods : {
-    addAuthor() {
-      console.log(this.tempAuthor)
-      this.$store.dispatch('updateMessage', this.tempAuthor)
-      this.tempAuthor = ""
+    setPostId() {
+      this.postData.id = this.postData.author.slice(0, 1) + this.postData.author.slice(-1) + Date.now() 
+    },
+    
+    updateMessage() {
+      this.setPostId()
+      const finalData = {...this.postData}
+      this.$store.dispatch('updateMessage', finalData)
+      this.$refs.form.reset()
+      
+      console.log(this.postData)
     }
   }
 };

@@ -5,18 +5,21 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
+    strict : true,
     state : {
-        author : ""
+        posts : []
     },
     actions : {
-        updateMessage : (context, payload) => {
-            context.commit('updateMessage', payload)
+        updateMessage : ({commit}, payload) => {
+            // console.log(payload)
+            commit('updateMessage', payload)
         }
     },
     mutations : {
         updateMessage : (state, payload) => {
-            state.author = payload
-            console.log(state.author)
+            
+            state.posts.push(payload)
+            console.log(state.posts)
         }
     }
 })

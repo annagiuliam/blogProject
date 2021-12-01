@@ -7,8 +7,8 @@
           cols="4"
         >
           <v-text-field
-            v-model="author"
-            label="First name"
+            v-model="tempAuthor"
+            label="Name"
             required
           ></v-text-field>
         </v-col>
@@ -38,6 +38,7 @@
         </v-col> -->
       </v-row>
     </v-container>
+    <v-btn @click="addAuthor">submit</v-btn>
   </v-form>
   <p>{{author }}</p>
   </v-app>
@@ -49,14 +50,19 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      tempAuthor : ""
+    }
+  },
   computed : {
     author : {
       get() {
         return this.$store.state.author
       },
-      set(value) {
-        this.$store.commit('updateMessage', value)
-      }
+      // set(value) {
+      //   this.$store.commit('updateMessage', value)
+      // }
     }
   },
 
@@ -64,11 +70,13 @@ export default {
     
   },
 
-  data: () => ({
-    name : ""
-  }),
+  
   methods : {
-
+    addAuthor() {
+      console.log(this.tempAuthor)
+      this.$store.dispatch('updateMessage', this.tempAuthor)
+      this.tempAuthor = ""
+    }
   }
 };
 </script>

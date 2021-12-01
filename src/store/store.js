@@ -8,9 +8,14 @@ export const store = new Vuex.Store({
     state : {
         author : ""
     },
+    actions : {
+        updateMessage : (context, payload) => {
+            context.commit('updateMessage', payload)
+        }
+    },
     mutations : {
-        updateMessage (state, author) {
-            state.author = author
+        updateMessage : (state, payload) => {
+            state.author = payload
             console.log(state.author)
         }
     }

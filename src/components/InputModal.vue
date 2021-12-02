@@ -1,5 +1,15 @@
 <template>
   <v-app>
+        <v-btn
+      class="ma-2"
+      outlined
+      fab
+      small
+      color="indigo"
+      @click="closeInputModal"
+    >
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
        <v-form ref="form">
     <v-container fluid>
       <v-row align="center"> 
@@ -42,7 +52,6 @@
 <script>
 export default {
     name : 'InputModal',
-    props : ['showInputModal'],
     data(){
         return {
             cathegories : ['Politik', 'Natur', 'Aktuell', 'Umwelt'],
@@ -63,13 +72,15 @@ export default {
         setDate() {
             this.postData.date = this.postData.date.toLocaleDateString(undefined, this.dateOptions)
         },
-        
         updateMessage() {
             this.setPostId()
             this.setDate()
             const finalData = {...this.postData}
             this.$store.dispatch('updateMessage', finalData)
             this.$refs.form.reset()
+        },
+        closeInputModal() {
+            this.$emit('close')
         }
     }
 }

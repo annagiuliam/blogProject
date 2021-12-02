@@ -21,7 +21,7 @@
       Outlined Button
     </v-btn>
     <div v-if="showInputModal">
-      <input-modal></input-modal>
+      <input-modal @close="closeInputModal"></input-modal>
     </div>
    
   <v-container v-for="post in posts" :key="post.id">
@@ -56,6 +56,9 @@ export default {
   methods : {
     openInputModal() {
       this.showInputModal = true;
+    },
+    closeInputModal() {
+      this.showInputModal = false;
     }
   }
 

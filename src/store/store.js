@@ -10,7 +10,6 @@ export const store = new Vuex.Store({
   },
   actions: {
     updateMessage: ({ commit }, payload) => {
-      // console.log(payload)
       commit("updateMessage", payload);
     },
   },

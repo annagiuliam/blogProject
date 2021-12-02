@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <v-row justify="center">
+      <v-dialog persistent max-width="600px"> </v-dialog>
+    </v-row>
     <v-btn
       class="ma-2"
       outlined
@@ -39,6 +42,8 @@
         <v-btn @click="updateMessage">submit</v-btn>
       </v-container>
     </v-form>
+
+    <!-- dialog -->
   </v-app>
 </template>
 

@@ -42,6 +42,7 @@
 <script>
 export default {
     name : 'InputModal',
+    props : ['showInputModal'],
     data(){
         return {
             cathegories : ['Politik', 'Natur', 'Aktuell', 'Umwelt'],
@@ -66,12 +67,9 @@ export default {
         updateMessage() {
             this.setPostId()
             this.setDate()
-            console.log(this.dateOptions)
             const finalData = {...this.postData}
             this.$store.dispatch('updateMessage', finalData)
             this.$refs.form.reset()
-            
-            console.log(this.postData)
         }
     }
 }

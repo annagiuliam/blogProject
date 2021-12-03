@@ -58,7 +58,7 @@
                   </v-row>
                   <v-row>
                     <v-textarea
-                    label="Inhalt"
+                      label="Inhalt"
                       outlined
                       auto-grow
                       v-model="postData.content"
@@ -89,7 +89,7 @@ export default {
         author: "",
         cathegory: "",
         date: new Date(),
-        title : "",
+        title: "",
         content: "",
         id: "",
       },

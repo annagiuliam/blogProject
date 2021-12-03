@@ -3,6 +3,9 @@
   <v-app>
     <Dialog />
     <v-container>
+      <v-row v-if="posts.length === 0" justify="center">
+        <h1>Es gibt noch keine Blogbeiträge</h1>
+      </v-row>
       <v-row wrap>
         <v-col s="6" md="4" v-for="post in posts" :key="post.id">
           <post-tile v-bind:post="post"></post-tile>

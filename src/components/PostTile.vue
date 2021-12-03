@@ -28,11 +28,9 @@ export default {
 </script>
 
 <style>
-    .elip{
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-
+.elip {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>

@@ -88,7 +88,7 @@ export default {
       postData: {
         author: "",
         cathegory: "",
-        date: new Date(),
+        date: "",
         title: "",
         content: "",
         id: "",
@@ -103,7 +103,8 @@ export default {
         Date.now();
     },
     setDate() {
-      this.postData.date = this.postData.date.toLocaleDateString(
+      let newDate = new Date();
+      this.postData.date = newDate.toLocaleDateString(
         undefined,
         this.dateOptions
       );

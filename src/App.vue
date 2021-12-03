@@ -3,8 +3,8 @@
   <v-app>
     <Dialog />
     <v-container>
-      <v-row>
-        <v-col v-for="post in posts" :key="post.id" xs12 sm12 md6 lg4 xl4>
+      <v-row wrap>
+        <v-col s="6" md="4" v-for="post in posts" :key="post.id">
           <post-tile v-bind:post="post"></post-tile>
         </v-col>
       </v-row>

@@ -1,7 +1,5 @@
 <template>
-  <v-card>
-    <!-- <v-card-title>{{ post.title }}</v-card-title>
-    <v-card-subtitle>{{ post.author }}</v-card-subtitle> -->
+  <v-card height="30vh">
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-1">{{ post.cathegory }}</div>
@@ -18,7 +16,7 @@
         </v-row>
       </v-list-item-content>
     </v-list-item>
-    <v-card-text>{{ post.content }}</v-card-text>
+    <v-card-text class="elip">{{ post.content }}</v-card-text>
   </v-card>
 </template>
 
@@ -29,4 +27,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+    .elip{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+
+</style>

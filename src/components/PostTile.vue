@@ -1,5 +1,5 @@
 <template>
-  <v-card height="30vh">
+  <v-card height="35vh">
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-1">{{ post.cathegory }}</div>
@@ -17,13 +17,18 @@
       </v-list-item-content>
     </v-list-item>
     <v-card-text class="elip">{{ post.content }}</v-card-text>
+    <PostDialog :post="post" />
   </v-card>
 </template>
 
 <script>
+import PostDialog from "./PostDialog.vue";
 export default {
   name: "PostTile",
   props: ["post"],
+  components: {
+    PostDialog,
+  },
 };
 </script>
 

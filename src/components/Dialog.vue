@@ -47,13 +47,22 @@
                         v-model="postData.cathegory"
                       ></v-select>
                     </v-col>
+
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="postData.title"
+                        label="Titel"
+                        required
+                      ></v-text-field>
+                    </v-col>
                   </v-row>
                   <v-row>
                     <v-textarea
+                    label="Inhalt"
                       outlined
                       auto-grow
                       v-model="postData.content"
-                      row-height="60vh"
+                      row-height="40vh"
                     ></v-textarea>
                   </v-row>
                   <v-row justify="end">
@@ -80,6 +89,7 @@ export default {
         author: "",
         cathegory: "",
         date: new Date(),
+        title : "",
         content: "",
         id: "",
       },

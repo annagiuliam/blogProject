@@ -5,10 +5,10 @@
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="ma-2" outlined color="indigo" v-bind="attrs" v-on="on">
-            Add New Post
+            Neuer Beitrag
           </v-btn>
         </template>
-        <v-card>
+        <v-card min-height="90vh">
           <v-container>
             <v-row justify="end">
               <v-btn
@@ -25,14 +25,14 @@
           </v-container>
 
           <v-card-title>
-            <span class="text-h5">User Profile</span>
+            <span class="text-h5">Neuer Beitrag</span>
           </v-card-title>
           <v-card-text>
             <v-container>
               <v-form ref="form">
                 <v-container fluid>
                   <v-row align="center">
-                    <v-col cols="4">
+                    <v-col cols="12" sm="6" md="4">
                       <v-text-field
                         v-model="postData.author"
                         label="Authorenname"
@@ -40,7 +40,7 @@
                       ></v-text-field>
                     </v-col>
 
-                    <v-col cols="4">
+                    <v-col cols="12" sm="6" md="4">
                       <v-select
                         :items="cathegories"
                         label="Kategorie"
@@ -53,9 +53,12 @@
                       outlined
                       auto-grow
                       v-model="postData.content"
+                      row-height="60vh"
                     ></v-textarea>
                   </v-row>
-                  <v-btn @click="updateMessage">submit</v-btn>
+                  <v-row justify="end">
+                    <v-btn @click="updateMessage">Speichern</v-btn>
+                  </v-row>
                 </v-container>
               </v-form>
             </v-container>

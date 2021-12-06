@@ -6,7 +6,7 @@
         <v-list-item-title class="text-h5 mb-1">
           {{ post.title }}
         </v-list-item-title>
-        <v-row justify="space-between" cols="6">
+        <v-row justify="space-between">
           <v-col>
             <v-list-item-subtitle>{{ post.author }}</v-list-item-subtitle>
           </v-col>
@@ -17,7 +17,7 @@
       </v-list-item-content>
     </v-list-item>
     <v-card-text class="elip">{{ post.content }}</v-card-text>
-    <PostDialog :post="post" />
+    <PostDialog v-bind:post="post" />
   </v-card>
 </template>
 

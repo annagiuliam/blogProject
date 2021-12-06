@@ -8,7 +8,22 @@
       <v-card>
         <v-list-item three-line>
           <v-list-item-content>
-            <div class="text-overline mb-1">{{ post.cathegory }}</div>
+            <v-row justify="space-between" align="center">
+              <v-col>
+                <div class="text-overline mb-1">
+                  {{ post.cathegory }}
+                </div></v-col
+              >
+              <v-col cols="3" class="d-flex justify-space-around">
+                <v-btn class="ma-1" outlined fab color="indigo" x-small>
+                  <v-icon>mdi-delete-outline</v-icon>
+                </v-btn>
+                 <v-btn class="ma-1" outlined fab color="indigo" x-small>
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+
             <v-list-item-title class="text-h5 mb-5">
               {{ post.title }}
             </v-list-item-title>

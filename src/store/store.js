@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
   strict: true,
   state: {
     posts: [],
+    cathegories: ["Politik", "Natur", "Aktuell", "Umwelt"],
   },
   actions: {
     updateMessage: ({ commit }, payload) => {

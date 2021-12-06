@@ -1,10 +1,29 @@
-/* eslint-disable prettier/prettier */
 <template>
-  <v-container mt-4>
+  <v-container>
     <v-row justify="center" width="80%">
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn class="ma-2" outlined color="indigo" v-bind="attrs" v-on="on">
+          <v-btn
+            v-if="icon"
+            class="ma-1"
+            outlined
+            fab
+            color="indigo"
+            x-small
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+
+          <v-btn
+            v-else
+            class="ma-2"
+            outlined
+            color="indigo"
+            v-bind="attrs"
+            v-on="on"
+          >
             Neuer Beitrag
           </v-btn>
         </template>
@@ -83,7 +102,6 @@ export default {
   data() {
     return {
       dialog: false,
-      cathegories: ["Politik", "Natur", "Aktuell", "Umwelt"],
       dateOptions: { year: "numeric", month: "long", day: "numeric" },
       postData: {
         author: "",
@@ -94,6 +112,12 @@ export default {
         id: "",
       },
     };
+  },
+  props: ["icon"],
+  computed: {
+    cathegories() {
+      return this.$store.state.cathegories;
+    },
   },
   methods: {
     setPostId() {
@@ -124,4 +148,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container .no-mt {
+  margin-top: 0;
+}
+</style>

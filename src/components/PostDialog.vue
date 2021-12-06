@@ -14,7 +14,7 @@
                   {{ post.cathegory }}
                 </div></v-col
               >
-              <v-col cols="3" class="d-flex justify-space-around">
+              <v-col cols="3" class="d-flex justify-space-around align-center">
                 <v-btn
                   class="ma-1"
                   outlined
@@ -25,9 +25,10 @@
                 >
                   <v-icon>mdi-delete-outline</v-icon>
                 </v-btn>
-                <v-btn class="ma-1" outlined fab color="indigo" x-small>
+                <!-- <v-btn class="ma-1" outlined fab color="indigo" x-small>
                   <v-icon>mdi-pencil</v-icon>
-                </v-btn>
+                </v-btn> -->
+                <Dialog :icon="true" />
               </v-col>
             </v-row>
 
@@ -63,11 +64,15 @@
 </template>
 
 <script>
+import Dialog from "./Dialog.vue";
 export default {
   data() {
     return {
       dialog: false,
     };
+  },
+  components: {
+    Dialog,
   },
   props: ["post"],
   methods: {

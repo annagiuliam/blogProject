@@ -113,7 +113,12 @@ export default {
       },
     };
   },
-  props: ["icon"],
+  created() {
+    if (this.post) {
+      this.postData = { ...this.post };
+    }
+  },
+  props: ["icon", "post"],
   computed: {
     cathegories() {
       return this.$store.state.cathegories;
@@ -137,7 +142,12 @@ export default {
       this.setPostId();
       this.setDate();
       const finalData = { ...this.postData };
-      this.$store.dispatch("updateMessage", finalData);
+      if (this.post) {
+        this.$store.dispatch("editPost", this.post);
+      } else {
+        this.$store.dispatch("updateMessage", finalData);
+      }
+
       this.dialog = false;
       this.$refs.form.reset();
     },
@@ -148,8 +158,4 @@ export default {
 };
 </script>
 
-<style>
-.container .no-mt {
-  margin-top: 0;
-}
-</style>
+<style></style>

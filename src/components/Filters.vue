@@ -33,7 +33,6 @@ export default {
   methods: {
     updateFilters() {
       const finalFilters = { ...this.filters };
-      //   this.$store.dispatch("applyFilters", finalFilters);
       this.$emit("updateFilters", finalFilters);
     },
   },

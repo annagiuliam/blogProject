@@ -28,7 +28,7 @@
                 <!-- <v-btn class="ma-1" outlined fab color="indigo" x-small>
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn> -->
-                <Dialog :icon="true" />
+                <Dialog :icon="true" :post="post" />
               </v-col>
             </v-row>
 

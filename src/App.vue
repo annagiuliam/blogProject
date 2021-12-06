@@ -23,10 +23,27 @@ import PostTile from "./components/PostTile.vue";
 import Filters from "./components/Filters.vue";
 export default {
   name: "App",
+  // beforeCreate() {
+  //   console.log("before create");
+  //   console.log(this.filteredPosts);
+  // },
+  // created() {
+  //   console.log("created");
+  //   console.log(this.filteredPosts);
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  //   console.log(this.filteredPosts);
+  // },
+  // beforeUpdate() {
+  //   console.log("mounted");
+  //   console.log(this.filteredPosts);
+  // },
   data() {
     return {
       showInputModal: false,
       filters: null,
+      filteredPosts: null,
     };
   },
   components: {
@@ -43,16 +60,17 @@ export default {
     updateFilters(finalFilters) {
       this.filters = { ...finalFilters };
       console.log(this.filters);
+      this.filterPosts();
     },
-    applyFilters: (state) => {
-      let tempPosts = [...state.posts];
-      if (state.filters.cathegory) {
+    filterPosts() {
+      let tempPosts = [...this.posts];
+      if (this.filters.cathegory) {
         tempPosts = tempPosts.filter(
-          (post) => post.cathegory === state.filters.cathegory
+          (post) => post.cathegory === this.filters.cathegory
         );
       }
-      state.filteredPosts = [...tempPosts];
-      console.log(state.filteredPosts);
+      this.filteredPosts = [...tempPosts];
+      console.log(this.filteredPosts);
     },
   },
 };

@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
   state: {
     posts: [],
     filteredPosts: [],
-    cathegories: ["Politik", "Natur", "Aktuell", "Umwelt"],
+    categories: ["Politik", "Natur", "Aktuell", "Umwelt"],
     filters: null,
   },
   actions: {

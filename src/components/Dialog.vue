@@ -61,9 +61,9 @@
 
                     <v-col cols="12" sm="6" md="6">
                       <v-select
-                        :items="cathegories"
+                        :items="categories"
                         label="Kategorie"
-                        v-model="postData.cathegory"
+                        v-model="postData.category"
                       ></v-select>
                     </v-col>
 
@@ -105,7 +105,7 @@ export default {
       dateOptions: { year: "numeric", month: "long", day: "numeric" },
       postData: {
         author: "",
-        cathegory: "",
+        category: "",
         date: "",
         title: "",
         content: "",
@@ -120,8 +120,8 @@ export default {
   },
   props: ["icon", "post"],
   computed: {
-    cathegories() {
-      return this.$store.state.cathegories;
+    categories() {
+      return this.$store.state.categories;
     },
   },
   methods: {

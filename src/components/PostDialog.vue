@@ -11,7 +11,7 @@
             <v-row justify="space-between" align="center">
               <v-col>
                 <div class="text-overline mb-1">
-                  {{ post.cathegory }}
+                  {{ post.category }}
                 </div></v-col
               >
               <v-col cols="3" class="d-flex justify-space-around align-center">

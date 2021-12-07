@@ -3,8 +3,8 @@
     <v-row>
       <v-col cols="4">
         <v-select
-          v-model="filters.cathegory"
-          :items="cathegories"
+          v-model="filters.category"
+          :items="categories"
           label="Nach Kategorie Sortieren"
           @input="updateFilters"
         ></v-select>
@@ -19,15 +19,15 @@ export default {
   data() {
     return {
       filters: {
-        cathegory: "",
+        category: "",
         date: false,
         searchTerm: "",
       },
     };
   },
   computed: {
-    cathegories() {
-      return this.$store.state.cathegories;
+    categories() {
+      return this.$store.state.categories;
     },
   },
   methods: {

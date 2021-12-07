@@ -142,8 +142,9 @@ export default {
       this.setPostId();
       this.setDate();
       const finalData = { ...this.postData };
+      console.log(finalData);
       if (this.post) {
-        this.$store.dispatch("editPost", this.post);
+        this.$store.dispatch("editPost", finalData);
       } else {
         this.$store.dispatch("updateMessage", finalData);
       }

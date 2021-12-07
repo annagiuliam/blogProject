@@ -29,7 +29,7 @@ export const store = new Vuex.Store({
     },
     deletePost: (state, payload) => {
       let filteredPosts = state.posts.filter((ele) => ele.id !== payload.id);
-      state.posts = { ...filteredPosts };
+      state.posts = [...filteredPosts];
       console.log(state.posts);
     },
     editPost: (state, payload) => {

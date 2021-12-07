@@ -9,7 +9,7 @@
         <h1>Es gibt noch keine Blogbeiträge</h1>
       </v-row>
       <v-row wrap>
-        <v-col s="6" md="4" v-for="post in this.filteredPosts" :key="post.id">
+        <v-col s="6" md="4" v-for="post in filteredPosts" :key="post.id">
           <post-tile v-bind:post="post"></post-tile>
         </v-col>
       </v-row>
@@ -27,7 +27,6 @@ export default {
     return {
       showInputModal: false,
       filters: null,
-      filteredPosts: [],
     };
   },
   components: {
@@ -39,33 +38,24 @@ export default {
     posts() {
       return this.$store.state.posts;
     },
+    filteredPosts() {
+      return this.filterPosts();
+    },
   },
   methods: {
     updateFilters(finalFilters) {
       this.filters = { ...finalFilters };
-      console.log(this.filters);
       this.filterPosts();
     },
     filterPosts() {
-      let tempPosts = [...this.posts];
-      console.log(tempPosts);
+      let tempPosts;
       if (this.filters.category) {
         console.log(this.filters.category);
-        tempPosts = tempPosts.filter(
+        tempPosts = this.posts.filter(
           (post) => post.category === this.filters.category
         );
       }
-      this.filteredPosts = [...tempPosts];
-      console.log(this.filteredPosts);
-    },
-    populateFilteredPosts() {
-      if (this.posts) {
-        this.filteredPosts = [...this.posts];
-      } else {
-        this.filteredPosts = [];
-      }
-
-      console.log(this.filteredPosts);
+      return tempPosts;
     },
   },
 };

@@ -23,22 +23,6 @@ import PostTile from "./components/PostTile.vue";
 import Filters from "./components/Filters.vue";
 export default {
   name: "App",
-  // beforeCreate() {
-  //   console.log("before create");
-  //   console.log(this.filteredPosts);
-  // },
-  // created() {
-  //   console.log("created");
-  //   console.log(this.filteredPosts);
-  // },
-  // mounted() {
-  //   console.log("mounted");
-  //   console.log(this.filteredPosts);
-  // },
-  // beforeUpdate() {
-  //   console.log("mounted");
-  //   console.log(this.filteredPosts);
-  // },
   data() {
     return {
       showInputModal: false,

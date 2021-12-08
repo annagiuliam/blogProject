@@ -18,7 +18,7 @@
 
           <v-btn
             v-else
-            class="ma-2"
+            class="my-9"
             outlined
             color="indigo"
             v-bind="attrs"
@@ -44,7 +44,8 @@
           </v-container>
 
           <v-card-title>
-            <span class="text-h5">Neuer Beitrag</span>
+            <span v-if="icon" class="text-h5">Beitrag Bearbeiten</span>
+            <span v-else class="text-h5">Neuer Beitrag</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -56,6 +57,7 @@
                         v-model="postData.author"
                         label="Authorenname"
                         required
+                        :rules="inputRules"
                       ></v-text-field>
                     </v-col>
 
@@ -64,6 +66,8 @@
                         :items="categories"
                         label="Kategorie"
                         v-model="postData.category"
+                        required
+                        :rules="inputRules"
                       ></v-select>
                     </v-col>
 
@@ -72,6 +76,7 @@
                         v-model="postData.title"
                         label="Titel"
                         required
+                        :rules="inputRules"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -82,6 +87,8 @@
                       auto-grow
                       v-model="postData.content"
                       row-height="40vh"
+                      required
+                      :rules="inputRules"
                     ></v-textarea>
                   </v-row>
                   <v-row justify="end">
@@ -101,6 +108,7 @@
 export default {
   data() {
     return {
+      inputRules: [(v) => !!v || "Inhalt fehlt"],
       dialog: false,
       dateOptions: { year: "numeric", month: "long", day: "numeric" },
       postData: {
@@ -141,17 +149,20 @@ export default {
       );
     },
     updateMessage() {
-      this.setPostId();
-      this.setDate();
-      const finalData = { ...this.postData };
-      if (this.post) {
-        this.$store.dispatch("editPost", finalData);
-      } else {
-        this.$store.dispatch("updateMessage", finalData);
-      }
+      const formValid = this.$refs.form.validate();
+      if (formValid) {
+        this.setPostId();
+        this.setDate();
+        const finalData = { ...this.postData };
+        if (this.post) {
+          this.$store.dispatch("editPost", finalData);
+        } else {
+          this.$store.dispatch("updateMessage", finalData);
+        }
 
-      this.dialog = false;
-      this.$refs.form.reset();
+        this.dialog = false;
+        this.$refs.form.reset();
+      }
     },
     closeInputModal() {
       this.$emit("close");

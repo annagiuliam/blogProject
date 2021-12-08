@@ -19,8 +19,8 @@
           append-icon="mdi-search"
         ></v-text-field>
       </v-col>
-      <v-col>
-        <v-btn text @click="sortByDate">
+      <v-col class="d-flex align-self-center">
+        <v-btn text @click="sortByDate" class="custom-btn">
           <v-icon class="mr-2">mdi-calendar-month-outline</v-icon>
           Nach Datum Sortieren
         </v-btn>
@@ -59,4 +59,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-btn.custom-btn {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Roboto", sans-serif;
+  letter-spacing: normal;
+  font-size: 16px;
+  text-transform: none;
+}
+</style>

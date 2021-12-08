@@ -1,14 +1,29 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="4" class="d-flex align-center">
+    <v-row class="align-center">
+      <v-col cols="4">
         <v-select
           v-model="filters.category"
+          @input="updateFilters"
           :items="categories"
           label="Nach Kategorie Sortieren"
-          @input="updateFilters"
           clearable
         ></v-select>
+      </v-col>
+      <v-col>
+        <v-text-field
+          v-model="filters.searchTerm"
+          @input="updateFilters"
+          clearable
+          label="Begriff Suchen"
+          append-icon="mdi-search"
+        ></v-text-field>
+      </v-col>
+      <v-col>
+        <v-btn text>
+          <v-icon class="mr-2">mdi-calendar-month-outline</v-icon>
+          Nach Datum Filtern
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>

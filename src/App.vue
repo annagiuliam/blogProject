@@ -57,6 +57,13 @@ export default {
             (post) => post.category === this.filters.category
           );
         }
+        if (this.filters.searchTerm) {
+          tempPosts = tempPosts.filter(
+            (post) =>
+              post.title.includes(this.filters.searchTerm) ||
+              post.content.includes(this.filters.searchTerm)
+          );
+        }
       }
 
       return tempPosts;

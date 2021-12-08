@@ -50,7 +50,6 @@ export default {
     updateFilters() {
       const finalFilters = { ...this.filters };
       this.$emit("updateFilters", finalFilters);
-      console.log(finalFilters);
     },
     sortByDate() {
       this.filters.date = !this.filters.date;

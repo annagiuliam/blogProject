@@ -37,7 +37,9 @@
                 <v-list-item-subtitle>{{ post.author }}</v-list-item-subtitle>
               </v-col>
               <v-col>
-                <v-list-item-subtitle>{{ post.date }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{
+                  post.formattedDate
+                }}</v-list-item-subtitle>
               </v-col>
             </v-row>
           </v-list-item-content>

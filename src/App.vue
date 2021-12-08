@@ -9,7 +9,13 @@
         <h1>Es gibt noch keine Blogbeiträge</h1>
       </v-row>
       <v-row wrap>
-        <v-col class="md-4 s-12" v-for="post in filteredPosts" :key="post.id">
+        <v-col
+          md="6"
+          xs="12"
+          s="12"
+          v-for="post in filteredPosts"
+          :key="post.id"
+        >
           <post-tile v-bind:post="post"></post-tile>
         </v-col>
       </v-row>

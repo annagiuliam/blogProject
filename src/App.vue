@@ -48,13 +48,17 @@ export default {
       this.filterPosts();
     },
     filterPosts() {
-      let tempPosts;
-      if (this.filters.category) {
-        console.log(this.filters.category);
-        tempPosts = this.posts.filter(
-          (post) => post.category === this.filters.category
-        );
+      let tempPosts = [...this.posts];
+      console.log(this.filters);
+      if (this.filters) {
+        if (this.filters.category) {
+          console.log(this.filters.category);
+          tempPosts = tempPosts.filter(
+            (post) => post.category === this.filters.category
+          );
+        }
       }
+
       return tempPosts;
     },
   },

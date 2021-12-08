@@ -20,7 +20,7 @@
         ></v-text-field>
       </v-col>
       <v-col>
-        <v-btn text>
+        <v-btn text @click="sortByDate">
           <v-icon class="mr-2">mdi-calendar-month-outline</v-icon>
           Nach Datum Sortieren
         </v-btn>
@@ -50,6 +50,11 @@ export default {
     updateFilters() {
       const finalFilters = { ...this.filters };
       this.$emit("updateFilters", finalFilters);
+      console.log(finalFilters);
+    },
+    sortByDate() {
+      this.filters.date = !this.filters.date;
+      this.updateFilters();
     },
   },
 };

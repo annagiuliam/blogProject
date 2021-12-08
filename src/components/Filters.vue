@@ -22,7 +22,7 @@
       <v-col>
         <v-btn text>
           <v-icon class="mr-2">mdi-calendar-month-outline</v-icon>
-          Nach Datum Filtern
+          Nach Datum Sortieren
         </v-btn>
       </v-col>
     </v-row>
@@ -51,7 +51,6 @@ export default {
       const finalFilters = { ...this.filters };
       this.$emit("updateFilters", finalFilters);
     },
-    deleteCategory() {},
   },
 };
 </script>

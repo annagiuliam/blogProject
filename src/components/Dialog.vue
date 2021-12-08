@@ -107,6 +107,7 @@ export default {
         author: "",
         category: "",
         date: "",
+        formattedDate: "",
         title: "",
         content: "",
         id: "",
@@ -133,7 +134,8 @@ export default {
     },
     setDate() {
       let newDate = new Date();
-      this.postData.date = newDate.toLocaleDateString(
+      this.postData.date = newDate;
+      this.postData.formattedDate = newDate.toLocaleDateString(
         undefined,
         this.dateOptions
       );

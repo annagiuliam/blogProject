@@ -9,7 +9,7 @@
         <h1>Es gibt noch keine Blogbeiträge</h1>
       </v-row>
       <v-row wrap>
-        <v-col s="6" md="4" v-for="post in filteredPosts" :key="post.id">
+        <v-col class="md-4 s-12" v-for="post in filteredPosts" :key="post.id">
           <post-tile v-bind:post="post"></post-tile>
         </v-col>
       </v-row>
@@ -49,23 +49,24 @@ export default {
     },
     filterPosts() {
       let tempPosts = [...this.posts];
-      console.log(this.filters);
       if (this.filters) {
         if (this.filters.category) {
-          console.log(this.filters.category);
           tempPosts = tempPosts.filter(
             (post) => post.category === this.filters.category
           );
         }
         if (this.filters.searchTerm) {
-          tempPosts = tempPosts.filter(
-            (post) =>
-              post.title.includes(this.filters.searchTerm) ||
-              post.content.includes(this.filters.searchTerm)
-          );
+          tempPosts = tempPosts.filter((post) => {
+            const searchPara = ["title", "author", "content"];
+            return searchPara.some((para) =>
+              post[para].includes(this.filters.searchTerm)
+            );
+          });
+        }
+        if (this.filters.date) {
+          tempPosts.sort((a, b) => b.date - a.date);
         }
       }
-
       return tempPosts;
     },
   },

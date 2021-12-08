@@ -10,9 +10,10 @@
       </v-row>
       <v-row wrap>
         <v-col
+          cols="12"
           md="6"
-          xs="12"
-          s="12"
+          sm="12"
+          xl="4"
           v-for="post in filteredPosts"
           :key="post.id"
         >

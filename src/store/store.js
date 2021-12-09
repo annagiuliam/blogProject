@@ -7,7 +7,6 @@ export const store = new Vuex.Store({
   strict: true,
   state: {
     posts: [],
-    filteredPosts: [],
     categories: ["Politik", "Natur", "Aktuell", "Umwelt"],
     filters: null,
   },

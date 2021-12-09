@@ -66,7 +66,9 @@ export default {
           tempPosts = tempPosts.filter((post) => {
             const searchPara = ["title", "author", "content"];
             return searchPara.some((para) =>
-              post[para].includes(this.filters.searchTerm)
+              post[para]
+                .toLowerCase()
+                .includes(this.filters.searchTerm.toLowerCase())
             );
           });
         }

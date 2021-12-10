@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
     editPost: ({ commit }, payload) => {
       commit("editPost", payload);
     },
+    deleteAllPosts: ({ commit }) => {
+      commit("deleteAllPosts");
+    },
   },
   mutations: {
     updateMessage: (state, payload) => {
@@ -33,6 +36,9 @@ export const store = new Vuex.Store({
       let newPost = { ...payload };
       let index = state.posts.findIndex((post) => post.id === payload.id);
       state.posts.splice(index, 1, newPost);
+    },
+    deleteAllPosts: (state) => {
+      state.posts = [];
     },
   },
 });

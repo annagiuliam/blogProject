@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container mb-4>
     <v-row class="align-center">
       <v-col cols="4">
         <v-select
@@ -31,6 +31,11 @@
         </v-btn>
       </v-col>
     </v-row>
+    <v-row>
+      <v-btn outlined color="indigo" @click="deleteAllPosts" class="mx-auto"
+        >Alle Beiträge löschen</v-btn
+      >
+    </v-row>
   </v-container>
 </template>
 
@@ -59,6 +64,9 @@ export default {
     sortByDate() {
       this.filters.date = !this.filters.date;
       this.updateFilters();
+    },
+    deleteAllPosts() {
+      this.$store.dispatch("deleteAllPosts");
     },
   },
 };

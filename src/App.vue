@@ -4,6 +4,7 @@
     <div v-if="posts.length > 0">
       <Filters @updateFilters="updateFilters" />
     </div>
+
     <v-container>
       <v-row v-if="posts.length === 0" justify="center">
         <h1>Es gibt noch keine Blogbeiträge</h1>

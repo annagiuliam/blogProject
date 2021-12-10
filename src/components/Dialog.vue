@@ -110,12 +110,10 @@ export default {
     return {
       inputRules: [(v) => !!v || "Inhalt fehlt"],
       dialog: false,
-      dateOptions: { year: "numeric", month: "long", day: "numeric" },
       postData: {
         author: "",
         category: "",
         date: "",
-        formattedDate: "",
         title: "",
         content: "",
         id: "",
@@ -141,12 +139,7 @@ export default {
         Date.now();
     },
     setDate() {
-      let newDate = new Date();
-      this.postData.date = newDate;
-      this.postData.formattedDate = newDate.toLocaleDateString(
-        undefined,
-        this.dateOptions
-      );
+      this.postData.date = new Date();
     },
     updateMessage() {
       const formValid = this.$refs.form.validate();

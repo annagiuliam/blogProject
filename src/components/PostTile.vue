@@ -12,7 +12,7 @@
           </v-col>
           <v-col>
             <v-list-item-subtitle>{{
-              post.formattedDate
+              this.formattedDate
             }}</v-list-item-subtitle>
           </v-col>
         </v-row>
@@ -26,10 +26,20 @@
 <script>
 import PostDialog from "./PostDialog.vue";
 export default {
+  data() {
+    return {
+      dateOptions: { year: "numeric", month: "long", day: "numeric" },
+    };
+  },
   name: "PostTile",
   props: ["post"],
   components: {
     PostDialog,
+  },
+  computed: {
+    formattedDate() {
+      return this.post.date.toLocaleDateString(undefined, this.dateOptions);
+    },
   },
 };
 </script>

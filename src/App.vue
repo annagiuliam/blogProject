@@ -17,7 +17,7 @@
           v-for="post in filteredPosts"
           :key="post.id"
         >
-          <post-tile v-bind:post="post"></post-tile>
+          <PostTile v-bind:post="post" />
         </v-col>
       </v-row>
     </v-container>
@@ -39,7 +39,7 @@ export default {
   components: {
     Dialog,
     Filters,
-    "post-tile": PostTile,
+    PostTile,
   },
   computed: {
     posts() {

@@ -157,9 +157,9 @@ export default {
         this.$refs.form.reset();
       }
     },
-    closeInputModal() {
-      this.$emit("close");
-    },
+    // closeInputModal() {
+    //   this.$emit("close");
+    // },
   },
 };
 </script>

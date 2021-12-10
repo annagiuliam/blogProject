@@ -5,7 +5,7 @@
         <v-btn outlined color="indigo" v-bind="attrs" v-on="on"> Lesen </v-btn>
       </template>
 
-      <v-card>
+      <!-- <v-card>
         <v-list-item three-line>
           <v-list-item-content>
             <v-row justify="space-between" align="center">
@@ -56,7 +56,11 @@
           >
             Schließen
           </v-btn>
+
         </v-card-actions>
+      </v-card> -->
+      <v-card>
+        <PostContent :post="post" />
       </v-card>
     </v-dialog>
   </div>
@@ -64,6 +68,8 @@
 
 <script>
 import Dialog from "./Dialog.vue";
+// import PostTile from "./PostTile.vue";
+import PostContent from "./PostContent.vue";
 export default {
   data() {
     return {
@@ -72,6 +78,7 @@ export default {
   },
   components: {
     Dialog,
+    PostContent,
   },
   props: ["post"],
   methods: {

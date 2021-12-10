@@ -1,30 +1,13 @@
 <template>
-  <v-card height="35vh">
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="text-overline mb-1">{{ post.category }}</div>
-        <v-list-item-title class="text-h5 mb-1">
-          {{ post.title }}
-        </v-list-item-title>
-        <v-row justify="space-between">
-          <v-col>
-            <v-list-item-subtitle>{{ post.author }}</v-list-item-subtitle>
-          </v-col>
-          <v-col>
-            <v-list-item-subtitle>{{
-              this.formattedDate
-            }}</v-list-item-subtitle>
-          </v-col>
-        </v-row>
-      </v-list-item-content>
-    </v-list-item>
-    <v-card-text class="elip">{{ post.content }}</v-card-text>
-    <PostDialog v-bind:post="post" />
+  <v-card>
+    <PostContent :post="post" :elip="elip" />
+    <PostDialog :post="post" v-if="elip" />
   </v-card>
 </template>
 
 <script>
 import PostDialog from "./PostDialog.vue";
+import PostContent from "./PostContent.vue";
 export default {
   data() {
     return {
@@ -32,14 +15,10 @@ export default {
     };
   },
   name: "PostTile",
-  props: ["post"],
+  props: ["post", "elip"],
   components: {
     PostDialog,
-  },
-  computed: {
-    formattedDate() {
-      return this.post.date.toLocaleDateString(undefined, this.dateOptions);
-    },
+    PostContent,
   },
 };
 </script>

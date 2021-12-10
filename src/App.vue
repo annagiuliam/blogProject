@@ -18,7 +18,7 @@
           v-for="post in filteredPosts"
           :key="post.id"
         >
-          <PostTile v-bind:post="post" />
+          <PostTile :post="post" :elip="true" />
         </v-col>
       </v-row>
     </v-container>
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       showInputModal: false,
+      showPost: true,
       filters: null,
     };
   },
@@ -51,6 +52,9 @@ export default {
     },
   },
   methods: {
+    openPost() {
+      this.showPost = true;
+    },
     updateFilters(finalFilters) {
       this.filters = { ...finalFilters };
       this.filterPosts();

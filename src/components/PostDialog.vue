@@ -7,7 +7,7 @@
         </v-btn>
       </template>
       <v-card>
-        <PostContent :post="post" />
+        <PostContent :post="post" @close="closeDialog" />
       </v-card>
     </v-dialog>
   </div>
@@ -28,6 +28,9 @@ export default {
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
+    },
+    closeDialog() {
+      this.dialog = false;
     },
   },
 };

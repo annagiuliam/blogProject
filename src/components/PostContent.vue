@@ -8,7 +8,7 @@
               {{ post.category }}
             </div></v-col
           >
-          <v-col class="d-flex justify-end align-center">
+          <v-col class="d-flex justify-end align-center max-width">
             <v-btn
               outlined
               fab
@@ -20,6 +20,18 @@
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
             <InputDialog :icon="true" :post="post" />
+
+            <v-btn
+              class="ma-2"
+              outlined
+              fab
+              x-small
+              color="indigo"
+              @click="closeDialog"
+              v-if="!elip"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
           </v-col>
         </v-row>
         <v-list-item-title class="text-h5 mb-1">
@@ -62,6 +74,9 @@ export default {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
     },
+    closeDialog() {
+      this.$emit("close");
+    },
   },
 };
 </script>
@@ -71,5 +86,8 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.max-width {
+  max-width: 150px;
 }
 </style>

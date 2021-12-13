@@ -57,6 +57,11 @@
 <script>
 import InputDialog from "./InputDialog.vue";
 export default {
+  data() {
+    return {
+      dateOptions: { year: "numeric", month: "long", day: "numeric" },
+    };
+  },
   components: {
     InputDialog,
   },

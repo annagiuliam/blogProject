@@ -9,11 +9,6 @@
 import PostDialog from "./PostDialog.vue";
 import PostContent from "./PostContent.vue";
 export default {
-  data() {
-    return {
-      dateOptions: { year: "numeric", month: "long", day: "numeric" },
-    };
-  },
   name: "PostTile",
   props: ["post", "elip"],
   components: {

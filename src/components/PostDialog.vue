@@ -2,63 +2,10 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn outlined color="indigo" v-bind="attrs" v-on="on"> Lesen </v-btn>
+        <v-btn outlined color="indigo" v-bind="attrs" v-on="on" class="mb-5">
+          Lesen
+        </v-btn>
       </template>
-
-      <!-- <v-card>
-        <v-list-item three-line>
-          <v-list-item-content>
-            <v-row justify="space-between" align="center">
-              <v-col>
-                <div class="text-overline mb-1">
-                  {{ post.category }}
-                </div></v-col
-              >
-              <v-col cols="3" class="d-flex justify-space-around align-center">
-                <v-btn
-                  class="ma-1"
-                  outlined
-                  fab
-                  color="indigo"
-                  x-small
-                  @click="deletePost"
-                >
-                  <v-icon>mdi-delete-outline</v-icon>
-                </v-btn>
-                <Dialog :icon="true" :post="post" />
-              </v-col>
-            </v-row>
-
-            <v-list-item-title class="text-h5 mb-5">
-              {{ post.title }}
-            </v-list-item-title>
-            <v-row justify="space-between" cols="6" class="mb-4">
-              <v-col>
-                <v-list-item-subtitle>{{ post.author }}</v-list-item-subtitle>
-              </v-col>
-              <v-col>
-                <v-list-item-subtitle>{{
-                  post.formattedDate
-                }}</v-list-item-subtitle>
-              </v-col>
-            </v-row>
-          </v-list-item-content>
-        </v-list-item>
-        <v-card-text>{{ post.content }}</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            outlined
-            color="indigo"
-            text
-            @click="dialog = false"
-            class="mb-3"
-          >
-            Schließen
-          </v-btn>
-
-        </v-card-actions>
-      </v-card> -->
       <v-card>
         <PostContent :post="post" />
       </v-card>
@@ -67,8 +14,6 @@
 </template>
 
 <script>
-// import Dialog from "./InputDialog.vue";
-// import PostTile from "./PostTile.vue";
 import PostContent from "./PostContent.vue";
 export default {
   data() {
@@ -77,7 +22,6 @@ export default {
     };
   },
   components: {
-    // Dialog,
     PostContent,
   },
   props: ["post"],

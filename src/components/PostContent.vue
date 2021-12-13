@@ -15,7 +15,7 @@
               color="indigo"
               x-small
               @click="deletePost"
-              class="mx-4"
+              class="ma-2"
             >
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>

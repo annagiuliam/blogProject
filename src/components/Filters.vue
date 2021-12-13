@@ -1,7 +1,7 @@
 <template>
-  <v-container mb-4>
-    <v-row class="align-center">
-      <v-col cols="4">
+  <v-container mb-6>
+    <v-row class="mb-4 d-flex wrap justify-center align-center">
+      <v-col :cols="cols" :sm="smallCols" :md="mediumCols">
         <v-select
           v-model="filters.category"
           @input="updateFilters"
@@ -10,7 +10,7 @@
           clearable
         ></v-select>
       </v-col>
-      <v-col>
+      <v-col :cols="cols" :sm="smallCols" :md="mediumCols">
         <v-text-field
           v-model="filters.searchTerm"
           @input="updateFilters"
@@ -19,7 +19,12 @@
           append-icon="mdi-search"
         ></v-text-field>
       </v-col>
-      <v-col class="d-flex align-self-center">
+      <v-col
+        class="d-flex justify-center"
+        :cols="cols"
+        :sm="smallCols"
+        :md="mediumCols"
+      >
         <v-btn
           text
           color="rgba(0, 0, 0, 0.6)"
@@ -44,6 +49,9 @@ export default {
   name: "Filters",
   data() {
     return {
+      cols: 12,
+      smallCols: 6,
+      mediumCols: 4,
       filters: {
         category: "",
         date: false,

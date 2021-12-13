@@ -8,7 +8,7 @@
               {{ post.category }}
             </div></v-col
           >
-          <v-col class="d-flex justify-end align-center max-width">
+          <v-col class="d-flex justify-end align-center max-width pa-1">
             <v-btn
               outlined
               fab
@@ -19,6 +19,7 @@
             >
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
+
             <InputDialog :icon="true" :post="post" />
 
             <v-btn

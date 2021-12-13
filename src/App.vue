@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Dialog />
+    <InputDialog />
     <div v-if="posts.length > 0">
       <Filters @updateFilters="updateFilters" />
     </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Dialog from "./components/Dialog.vue";
+import InputDialog from "./components/InputDialog.vue";
 import PostTile from "./components/PostTile.vue";
 import Filters from "./components/Filters.vue";
 export default {
@@ -39,7 +39,7 @@ export default {
     };
   },
   components: {
-    Dialog,
+    InputDialog,
     Filters,
     PostTile,
   },

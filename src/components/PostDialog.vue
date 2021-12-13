@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import Dialog from "./Dialog.vue";
+// import Dialog from "./InputDialog.vue";
 // import PostTile from "./PostTile.vue";
 import PostContent from "./PostContent.vue";
 export default {
@@ -77,7 +77,7 @@ export default {
     };
   },
   components: {
-    Dialog,
+    // Dialog,
     PostContent,
   },
   props: ["post"],

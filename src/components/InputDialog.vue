@@ -1,11 +1,10 @@
 <template>
-  <v-container>
-    <v-row justify="center" width="80%">
+  <v-container class="auto-width">
+    <v-row>
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             v-if="icon"
-            class="ma-1"
             outlined
             fab
             color="indigo"
@@ -18,7 +17,7 @@
 
           <v-btn
             v-else
-            class="my-9"
+            class="my-9 mx-auto"
             outlined
             color="indigo"
             v-bind="attrs"
@@ -27,6 +26,7 @@
             Neuer Beitrag
           </v-btn>
         </template>
+
         <v-card min-height="90vh">
           <v-container>
             <v-row justify="end">
@@ -164,4 +164,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container.auto-width {
+  width: auto;
+}
+</style>

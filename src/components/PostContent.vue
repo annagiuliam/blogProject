@@ -2,20 +2,20 @@
   <v-container>
     <v-list-item three-line>
       <v-list-item-content>
-        <v-row justify="space-between" align="center">
+        <v-row class="d-flex justify-space-between align-center">
           <v-col>
             <div class="text-overline mb-1">
               {{ post.category }}
             </div></v-col
           >
-          <v-col cols="3" class="d-flex justify-space-around align-center">
+          <v-col class="d-flex justify-end align-center">
             <v-btn
-              class="ma-1"
               outlined
               fab
               color="indigo"
               x-small
               @click="deletePost"
+              class="mx-4"
             >
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>

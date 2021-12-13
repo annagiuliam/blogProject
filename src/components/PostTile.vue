@@ -23,10 +23,4 @@ export default {
 };
 </script>
 
-<style>
-.elip {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-</style>
+<style></style>

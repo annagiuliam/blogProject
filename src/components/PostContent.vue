@@ -37,7 +37,7 @@
         </v-row>
       </v-list-item-content>
     </v-list-item>
-    <v-card-text class="elip">{{ post.content }}</v-card-text>
+    <v-card-text :class="textClass">{{ post.content }}</v-card-text>
   </v-container>
 </template>
 
@@ -53,6 +53,10 @@ export default {
     formattedDate() {
       return this.post.date.toLocaleDateString(undefined, this.dateOptions);
     },
+    textClass() {
+      let className = this.elip ? "text-elip" : "";
+      return className;
+    },
   },
   methods: {
     deletePost() {
@@ -62,4 +66,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.text-elip {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+</style>

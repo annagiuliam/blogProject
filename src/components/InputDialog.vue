@@ -1,5 +1,5 @@
 <template>
-  <v-container class="auto-width" mx-0>
+  <v-container class="auto-width">
     <v-row>
       <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">

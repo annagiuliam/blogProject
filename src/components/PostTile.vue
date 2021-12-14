@@ -2,6 +2,7 @@
   <v-card>
     <PostContent :post="post" :elip="elip" />
     <PostDialog :post="post" v-if="elip" />
+    <v-btn @click="updateCurrentPost">read</v-btn>
   </v-card>
 </template>
 
@@ -14,6 +15,11 @@ export default {
   components: {
     PostDialog,
     PostContent,
+  },
+  methods: {
+    updateCurrentPost() {
+      this.$store.dispatch("updateCurrentPost", this.post);
+    },
   },
 };
 </script>

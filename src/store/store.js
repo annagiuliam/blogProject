@@ -4,6 +4,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+  currentPost: null,
   strict: true,
   state: {
     posts: [],
@@ -23,6 +24,9 @@ export const store = new Vuex.Store({
     deleteAllPosts: ({ commit }) => {
       commit("deleteAllPosts");
     },
+    updateCurrentPost: ({ commit }, payload) => {
+      commit("updateCurrentPost", payload);
+    },
   },
   mutations: {
     updateMessage: (state, payload) => {
@@ -39,6 +43,11 @@ export const store = new Vuex.Store({
     },
     deleteAllPosts: (state) => {
       state.posts = [];
+    },
+    updateCurrentPost: (state, payload) => {
+      console.log(payload);
+      state.currentPost = { ...payload };
+      console.log(state.currentPost);
     },
   },
 });

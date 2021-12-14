@@ -18,7 +18,7 @@ import PostContent from "./PostContent.vue";
 export default {
   data() {
     return {
-      dialog: false,
+      dialog: true,
     };
   },
   components: {

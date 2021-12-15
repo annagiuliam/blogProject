@@ -4,30 +4,15 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-  currentPost: null,
   strict: true,
   state: {
+    currentPost: null,
     posts: [],
     categories: ["Politik", "Natur", "Aktuell", "Umwelt"],
     filters: null,
+    open: [],
   },
-  actions: {
-    updateMessage: ({ commit }, payload) => {
-      commit("updateMessage", payload);
-    },
-    deletePost: ({ commit }, payload) => {
-      commit("deletePost", payload);
-    },
-    editPost: ({ commit }, payload) => {
-      commit("editPost", payload);
-    },
-    deleteAllPosts: ({ commit }) => {
-      commit("deleteAllPosts");
-    },
-    updateCurrentPost: ({ commit }, payload) => {
-      commit("updateCurrentPost", payload);
-    },
-  },
+
   mutations: {
     updateMessage: (state, payload) => {
       state.posts.push(payload);
@@ -45,9 +30,34 @@ export const store = new Vuex.Store({
       state.posts = [];
     },
     updateCurrentPost: (state, payload) => {
-      console.log(payload);
       state.currentPost = { ...payload };
       console.log(state.currentPost);
+    },
+    open: (state, name) => {
+      console.log(state.open);
+      state.open.unshift(name);
+      console.log(state.open);
+    },
+  },
+
+  actions: {
+    updateMessage: ({ commit }, payload) => {
+      commit("updateMessage", payload);
+    },
+    deletePost: ({ commit }, payload) => {
+      commit("deletePost", payload);
+    },
+    editPost: ({ commit }, payload) => {
+      commit("editPost", payload);
+    },
+    deleteAllPosts: ({ commit }) => {
+      commit("deleteAllPosts");
+    },
+    updateCurrentPost: ({ commit }, payload) => {
+      commit("updateCurrentPost", payload);
+    },
+    open: ({ commit }, name) => {
+      commit("open", name);
     },
   },
 });

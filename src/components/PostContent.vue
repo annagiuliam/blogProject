@@ -75,6 +75,9 @@ export default {
       let className = this.elip ? "text-elip" : "";
       return className;
     },
+    // post() {
+    //   return this.$store.state.currentPost;
+    // },
   },
   methods: {
     deletePost() {

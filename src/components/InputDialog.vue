@@ -107,8 +107,10 @@
 
 <script>
 export default {
+  name: "InputDialog",
   data() {
     return {
+      name: "InputDialog",
       inputRules: [(v) => !!v || "Inhalt fehlt"],
       dialog: false,
       postData: {

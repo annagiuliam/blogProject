@@ -34,8 +34,14 @@ export const store = new Vuex.Store({
       console.log(state.currentPost);
     },
     open: (state, name) => {
+      if (!state.open.includes(name)) {
+        state.open.push(name);
+      }
+
       console.log(state.open);
-      state.open.unshift(name);
+    },
+    close: (state, name) => {
+      state.open = state.open.filter((ele) => ele !== name);
       console.log(state.open);
     },
   },
@@ -58,6 +64,9 @@ export const store = new Vuex.Store({
     },
     open: ({ commit }, name) => {
       commit("open", name);
+    },
+    close: ({ commit }, name) => {
+      commit("close", name);
     },
   },
 });

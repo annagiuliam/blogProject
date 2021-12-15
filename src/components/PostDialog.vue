@@ -7,7 +7,7 @@
         </v-btn>
       </template> -->
       <v-card>
-        <PostContent :post="currentPost" @close="closeDialog" />
+        <PostContent :post="currentPost" :parent="this.name" />
       </v-card>
     </v-dialog>
   </div>
@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       name: "PostDialog",
-      // dialog: false,
     };
   },
   computed: {
@@ -39,20 +38,6 @@ export default {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
     },
-    closeDialog() {
-      console.log(this.name);
-      this.dialog = false;
-    },
-  },
-  created() {
-    console.log(this.dialog);
-    console.log(this.$store.state.open.includes(this.name));
-    // if (this.$store.state.open.includes(this.name)) {
-    //   this.dialog = true;
-    // }
-  },
-  beforeDestroy() {
-    console.log(this.dialog);
   },
 };
 </script>

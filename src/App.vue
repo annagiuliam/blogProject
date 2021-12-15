@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <InputDialog />
+    <PostDialog />
     <div v-if="posts.length > 0">
       <Filters @updateFilters="updateFilters" />
     </div>
@@ -20,19 +21,20 @@
 
 <script>
 import InputDialog from "./components/InputDialog.vue";
+import PostDialog from "./components/PostDialog.vue";
 import PostTile from "./components/PostTile.vue";
 import Filters from "./components/Filters.vue";
+
 export default {
   name: "App",
   data() {
     return {
-      showInputModal: false,
-      showPost: true,
       filters: null,
     };
   },
   components: {
     InputDialog,
+    PostDialog,
     Filters,
     PostTile,
   },
@@ -44,10 +46,14 @@ export default {
       return this.filterPosts();
     },
   },
+  updated() {
+    // console.log(this.isOpen);
+  },
   methods: {
-    openPost() {
-      this.showPost = true;
-    },
+    // openPost() {
+    //   this.showPost = true;
+    // },
+
     updateFilters(finalFilters) {
       this.filters = { ...finalFilters };
       this.filterPosts();

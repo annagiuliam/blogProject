@@ -66,7 +66,7 @@ export default {
     InputDialog,
   },
   name: "PostContent",
-  props: ["post", "elip"],
+  props: ["post", "elip", "parent"],
   computed: {
     formattedDate() {
       return this.post.date.toLocaleDateString(undefined, this.dateOptions);
@@ -75,16 +75,13 @@ export default {
       let className = this.elip ? "text-elip" : "";
       return className;
     },
-    // post() {
-    //   return this.$store.state.currentPost;
-    // },
   },
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
     },
     closeDialog() {
-      this.$emit("close");
+      this.$store.dispatch("close", this.parent);
     },
   },
 };

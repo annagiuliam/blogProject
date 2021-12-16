@@ -1,7 +1,16 @@
 <template>
   <v-card>
     <PostContent :post="post" :elip="elip" />
-    <v-btn @click="openDialog('PostDialog')"> read </v-btn>
+    <v-row>
+      <v-btn
+        class="mx-auto mb-3"
+        outlined
+        color="indigo"
+        @click="openPostDialog"
+      >
+        read
+      </v-btn>
+    </v-row>
   </v-card>
 </template>
 
@@ -17,9 +26,9 @@ export default {
     updateCurrentPost() {
       this.$store.dispatch("updateCurrentPost", this.post);
     },
-    openDialog(name) {
+    openPostDialog() {
       this.updateCurrentPost();
-      this.$store.dispatch("open", name);
+      this.$store.dispatch("openPostDialog");
     },
   },
 };

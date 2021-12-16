@@ -19,12 +19,12 @@ export default {
   name: "PostDialog",
   data() {
     return {
-      name: "PostDialog",
+      // name: "PostDialog",
     };
   },
   computed: {
     dialog() {
-      return this.$store.state.open.includes(this.name);
+      return this.$store.state.postDialog;
     },
     currentPost() {
       return this.$store.state.currentPost;

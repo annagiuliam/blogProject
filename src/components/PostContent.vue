@@ -20,8 +20,6 @@
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
 
-            <!-- <InputDialog :icon="true" :post="post" /> -->
-
             <v-btn outlined fab color="indigo" x-small class="ma-2">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
@@ -32,7 +30,7 @@
               fab
               x-small
               color="indigo"
-              @click="closeDialog"
+              @click="closePostDialog"
               v-if="!elip"
             >
               <v-icon>mdi-close</v-icon>
@@ -59,17 +57,14 @@
 </template>
 
 <script>
-import InputDialog from "./InputDialog.vue";
 export default {
+  name: "PostContent",
   data() {
     return {
       dateOptions: { year: "numeric", month: "long", day: "numeric" },
+      name: "PostContent",
     };
   },
-  components: {
-    InputDialog,
-  },
-  name: "PostContent",
   props: ["post", "elip", "parent"],
   computed: {
     formattedDate() {
@@ -83,11 +78,20 @@ export default {
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
+      this.closeDialog();
     },
-    closeDialog() {
-      this.$store.dispatch("close", this.parent);
+    closePostDialog() {
+      this.$store.dispatch("closePostDialog");
+      // this.clearCurrentPost();
+    },
+    clearCurrentPost() {
+      this.$store.dispatch("updateCurrentPost", {});
     },
   },
+  // updated() {
+  //   this.clearCurrentPost();
+  //   console.log(this.$store.state.currentPost);
+  // },
 };
 </script>
 

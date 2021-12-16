@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog :value="dialog" width="500">
+    <v-dialog :value="dialog" width="500" @click:outside="closePostDialog">
       <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn outlined color="indigo" v-bind="attrs" v-on="on" class="mb-5">
           Lesen
@@ -37,6 +37,9 @@ export default {
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.post);
+    },
+    closePostDialog() {
+      this.$store.dispatch("closePostDialog");
     },
   },
 };

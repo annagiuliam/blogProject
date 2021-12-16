@@ -1,7 +1,12 @@
 <template>
   <v-container class="auto-width">
     <v-row>
-      <v-dialog :value="dialog" persistent max-width="800px">
+      <v-dialog
+        :value="dialog"
+        persistent
+        max-width="800px"
+        @click:outside="closeInputDialog"
+      >
         <!-- <template v-slot:activator="{ on, attrs }"> -->
         <!-- <v-btn
             v-if="icon"
@@ -110,7 +115,7 @@ export default {
   name: "InputDialog",
   data() {
     return {
-      name: "InputDialog",
+      // name: "InputDialog",
       inputRules: [(v) => !!v || "Inhalt fehlt"],
       // dialog: false,
       postData: {

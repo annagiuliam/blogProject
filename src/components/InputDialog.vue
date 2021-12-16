@@ -1,9 +1,9 @@
 <template>
   <v-container class="auto-width">
     <v-row>
-      <v-dialog v-model="dialog" persistent max-width="800px">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
+      <v-dialog :value="dialog" persistent max-width="800px">
+        <!-- <template v-slot:activator="{ on, attrs }"> -->
+        <!-- <v-btn
             v-if="icon"
             outlined
             fab
@@ -14,19 +14,19 @@
             class="ma-2"
           >
             <v-icon>mdi-pencil</v-icon>
-          </v-btn>
+          </v-btn> -->
 
-          <v-btn
-            v-else
-            class="my-9 mx-auto"
-            outlined
-            color="indigo"
-            v-bind="attrs"
-            v-on="on"
-          >
-            Neuer Beitrag
-          </v-btn>
-        </template>
+        <!-- <v-btn
+          v-if="!icon"
+          class="my-9 mx-auto"
+          outlined
+          color="indigo"
+          v-bind="attrs"
+          v-on="on"
+        >
+          Neuer Beitrag
+        </v-btn> -->
+        <!-- </template> -->
 
         <v-card min-height="90vh">
           <v-container>
@@ -37,7 +37,7 @@
                 fab
                 small
                 color="indigo"
-                @click="dialog = false"
+                @click="closeDialog(this.name)"
               >
                 <v-icon>mdi-close</v-icon>
               </v-btn>
@@ -112,7 +112,7 @@ export default {
     return {
       name: "InputDialog",
       inputRules: [(v) => !!v || "Inhalt fehlt"],
-      dialog: false,
+      // dialog: false,
       postData: {
         author: "",
         category: "",
@@ -132,6 +132,9 @@ export default {
   computed: {
     categories() {
       return this.$store.state.categories;
+    },
+    dialog() {
+      return this.$store.state.open.includes(this.name);
     },
   },
   methods: {
@@ -155,10 +158,13 @@ export default {
         } else {
           this.$store.dispatch("updateMessage", finalData);
         }
-
-        this.dialog = false;
+        this.closeDialog(this.name);
+        // this.dialog = false;
         this.$refs.form.reset();
       }
+    },
+    closeDialog(name) {
+      this.$store.dispatch("close", name);
     },
   },
 };

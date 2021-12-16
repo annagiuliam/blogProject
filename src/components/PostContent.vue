@@ -20,7 +20,11 @@
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
 
-            <InputDialog :icon="true" :post="post" />
+            <!-- <InputDialog :icon="true" :post="post" /> -->
+
+            <v-btn outlined fab color="indigo" x-small class="ma-2">
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
 
             <v-btn
               class="ma-2"

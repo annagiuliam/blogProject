@@ -8,7 +8,7 @@
         class="my-9 mx-auto"
         outlined
         color="indigo"
-        @click="openDialog('InputDialog')"
+        @click="openInputDialog"
       >
         Neuer Beitrag
       </v-btn>
@@ -61,8 +61,8 @@ export default {
     // console.log(this.isOpen);
   },
   methods: {
-    openDialog(name) {
-      this.$store.dispatch("open", name);
+    openInputDialog() {
+      this.$store.dispatch("openInputDialog");
     },
 
     updateFilters(finalFilters) {

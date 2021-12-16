@@ -65,7 +65,7 @@ export default {
       name: "PostContent",
     };
   },
-  props: ["post", "elip", "parent"],
+  props: ["post", "elip"],
   computed: {
     formattedDate() {
       return this.post.date.toLocaleDateString(undefined, this.dateOptions);

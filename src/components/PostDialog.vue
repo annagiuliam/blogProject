@@ -7,7 +7,7 @@
         </v-btn>
       </template> -->
       <v-card>
-        <PostContent :post="currentPost" :parent="this.name" />
+        <PostContent :post="currentPost" />
       </v-card>
     </v-dialog>
   </div>

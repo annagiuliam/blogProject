@@ -37,7 +37,7 @@
                 fab
                 small
                 color="indigo"
-                @click="closeDialog(this.name)"
+                @click="closeInputDialog"
               >
                 <v-icon>mdi-close</v-icon>
               </v-btn>
@@ -134,7 +134,7 @@ export default {
       return this.$store.state.categories;
     },
     dialog() {
-      return this.$store.state.open.includes(this.name);
+      return this.$store.state.inputDialog;
     },
   },
   methods: {
@@ -158,13 +158,13 @@ export default {
         } else {
           this.$store.dispatch("updateMessage", finalData);
         }
-        this.closeDialog(this.name);
+        this.closeInputDialog();
         // this.dialog = false;
         this.$refs.form.reset();
       }
     },
-    closeDialog(name) {
-      this.$store.dispatch("close", name);
+    closeInputDialog() {
+      this.$store.dispatch("closeInputDialog");
     },
   },
 };

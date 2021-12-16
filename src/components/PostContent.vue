@@ -82,6 +82,7 @@ export default {
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
+      this.$store.dispatch("clearCurrentPost");
       // this.clearCurrentPost();
     },
     clearCurrentPost() {

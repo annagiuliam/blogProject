@@ -7,7 +7,7 @@
         </v-btn>
       </template> -->
       <v-card>
-        <PostContent :post="currentPost" />
+        <PostContent :post="currentPost" v-if="currentPost" />
       </v-card>
     </v-dialog>
   </div>
@@ -40,6 +40,7 @@ export default {
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
+      this.$store.dispatch("clearCurrentPost");
     },
   },
 };

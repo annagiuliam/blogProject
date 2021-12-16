@@ -2,14 +2,25 @@
   <v-app>
     <InputDialog />
     <PostDialog />
-    <div v-if="posts.length > 0">
-      <Filters @updateFilters="updateFilters" />
-    </div>
+
+    <v-container class="d-flex flex-column justify-center">
+      <v-btn
+        class="my-9 mx-auto"
+        outlined
+        color="indigo"
+        @click="openDialog('InputDialog')"
+      >
+        Neuer Beitrag
+      </v-btn>
+      <div v-if="posts.length > 0">
+        <Filters @updateFilters="updateFilters" />
+      </div>
+      <div v-else>
+        <h1 class="text-center">Es gibt noch keine Blogbeiträge</h1>
+      </div>
+    </v-container>
 
     <v-container>
-      <v-row v-if="posts.length === 0" justify="center">
-        <h1>Es gibt noch keine Blogbeiträge</h1>
-      </v-row>
       <v-row wrap>
         <v-col cols="12" md="4" v-for="post in filteredPosts" :key="post.id">
           <PostTile :post="post" :elip="true" />
@@ -50,9 +61,9 @@ export default {
     // console.log(this.isOpen);
   },
   methods: {
-    // openPost() {
-    //   this.showPost = true;
-    // },
+    openDialog(name) {
+      this.$store.dispatch("open", name);
+    },
 
     updateFilters(finalFilters) {
       this.filters = { ...finalFilters };

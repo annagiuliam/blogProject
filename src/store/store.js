@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
     posts: [],
     categories: ["Politik", "Natur", "Aktuell", "Umwelt"],
     filters: null,
-    open: [],
+    postDialog: false,
+    inputDialog: false,
   },
 
   mutations: {
@@ -33,16 +34,23 @@ export const store = new Vuex.Store({
       state.currentPost = { ...payload };
       console.log(state.currentPost);
     },
-    open: (state, name) => {
-      if (!state.open.includes(name)) {
-        state.open.push(name);
-      }
+    openPostDialog: (state) => {
+      state.postDialog = true;
 
-      console.log(state.open);
+      console.log(state.postDialog);
     },
-    close: (state, name) => {
-      state.open = state.open.filter((ele) => ele !== name);
-      console.log(state.open);
+    closePostDialog: (state) => {
+      state.postDialog = false;
+      console.log(state.postDialog);
+    },
+    openInputDialog: (state) => {
+      state.inputDialog = true;
+
+      console.log(state.inputDialog);
+    },
+    closeInputDialog: (state) => {
+      state.inputDialog = false;
+      console.log(state.inputDialog);
     },
   },
 
@@ -62,11 +70,17 @@ export const store = new Vuex.Store({
     updateCurrentPost: ({ commit }, payload) => {
       commit("updateCurrentPost", payload);
     },
-    open: ({ commit }, name) => {
-      commit("open", name);
+    openPostDialog: ({ commit }) => {
+      commit("openPostDialog");
     },
-    close: ({ commit }, name) => {
-      commit("close", name);
+    closePostDialog: ({ commit }) => {
+      commit("closePostDialog");
+    },
+    openInputDialog: ({ commit }) => {
+      commit("openInputDialog");
+    },
+    closeInputDialog: ({ commit }) => {
+      commit("closeInputDialog");
     },
   },
 });

@@ -15,8 +15,9 @@ export const store = new Vuex.Store({
   },
 
   mutations: {
-    updateMessage: (state, payload) => {
+    addNewPost: (state, payload) => {
       state.posts.push(payload);
+      console.log("addNewPost", state.posts);
     },
     deletePost: (state, payload) => {
       let filteredPosts = state.posts.filter((ele) => ele.id !== payload.id);
@@ -26,6 +27,7 @@ export const store = new Vuex.Store({
       let newPost = { ...payload };
       let index = state.posts.findIndex((post) => post.id === payload.id);
       state.posts.splice(index, 1, newPost);
+      console.log("editPost", state.posts);
     },
     deleteAllPosts: (state) => {
       state.posts = [];
@@ -37,20 +39,20 @@ export const store = new Vuex.Store({
     openPostDialog: (state) => {
       state.postDialog = true;
 
-      console.log(state.postDialog);
+      console.log("PostDialog", state.postDialog);
     },
     closePostDialog: (state) => {
       state.postDialog = false;
-      console.log(state.postDialog);
+      console.log("PostDialog", state.postDialog);
     },
     openInputDialog: (state) => {
       state.inputDialog = true;
 
-      console.log(state.inputDialog);
+      console.log("InputDialog", state.inputDialog);
     },
     closeInputDialog: (state) => {
       state.inputDialog = false;
-      console.log(state.inputDialog);
+      console.log("InputDialog", state.inputDialog);
     },
     clearCurrentPost: (state) => {
       state.currentPost = null;
@@ -59,8 +61,8 @@ export const store = new Vuex.Store({
   },
 
   actions: {
-    updateMessage: ({ commit }, payload) => {
-      commit("updateMessage", payload);
+    addNewPost: ({ commit }, payload) => {
+      commit("addNewPost", payload);
     },
     deletePost: ({ commit }, payload) => {
       commit("deletePost", payload);
@@ -86,6 +88,9 @@ export const store = new Vuex.Store({
     },
     closeInputDialog: ({ commit }) => {
       commit("closeInputDialog");
+    },
+    clearCurrentPost: ({ commit }) => {
+      commit("clearCurrentPost");
     },
   },
 });

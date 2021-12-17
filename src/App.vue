@@ -57,9 +57,6 @@ export default {
       return this.filterPosts();
     },
   },
-  updated() {
-    // console.log(this.isOpen);
-  },
   methods: {
     openInputDialog() {
       this.$store.dispatch("openInputDialog");

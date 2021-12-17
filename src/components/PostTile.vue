@@ -23,11 +23,12 @@ export default {
     PostContent,
   },
   methods: {
-    updateCurrentPost() {
-      this.$store.dispatch("updateCurrentPost", this.post);
-    },
+    // updateCurrentPost() {
+    //   this.$store.dispatch("updateCurrentPost", this.post);
+    // },
     openPostDialog() {
-      this.updateCurrentPost();
+      // this.updateCurrentPost();
+      this.$store.dispatch("updateCurrentPost", this.post);
       this.$store.dispatch("openPostDialog");
     },
   },

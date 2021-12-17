@@ -7,32 +7,6 @@
         max-width="800px"
         @click:outside="closeInputDialog"
       >
-        <!-- <template v-slot:activator="{ on, attrs }"> -->
-        <!-- <v-btn
-            v-if="icon"
-            outlined
-            fab
-            color="indigo"
-            x-small
-            v-bind="attrs"
-            v-on="on"
-            class="ma-2"
-          >
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn> -->
-
-        <!-- <v-btn
-          v-if="!icon"
-          class="my-9 mx-auto"
-          outlined
-          color="indigo"
-          v-bind="attrs"
-          v-on="on"
-        >
-          Neuer Beitrag
-        </v-btn> -->
-        <!-- </template> -->
-
         <v-card min-height="90vh">
           <v-container>
             <v-row justify="end">
@@ -50,7 +24,9 @@
           </v-container>
 
           <v-card-title>
-            <span v-if="icon" class="text-h5">Beitrag Bearbeiten</span>
+            <span v-if="this.currentPost" class="text-h5"
+              >Beitrag Bearbeiten</span
+            >
             <span v-else class="text-h5">Neuer Beitrag</span>
           </v-card-title>
           <v-card-text>
@@ -98,7 +74,7 @@
                     ></v-textarea>
                   </v-row>
                   <v-row justify="end">
-                    <v-btn @click="updateMessage">Speichern</v-btn>
+                    <v-btn @click="sendMessage">Speichern</v-btn>
                   </v-row>
                 </v-container>
               </v-form>
@@ -115,9 +91,7 @@ export default {
   name: "InputDialog",
   data() {
     return {
-      // name: "InputDialog",
       inputRules: [(v) => !!v || "Inhalt fehlt"],
-      // dialog: false,
       postData: {
         author: "",
         category: "",
@@ -128,18 +102,29 @@ export default {
       },
     };
   },
-  created() {
-    if (this.post) {
-      this.postData = { ...this.post };
-    }
-  },
-  props: ["icon", "post"],
+
   computed: {
     categories() {
       return this.$store.state.categories;
     },
     dialog() {
       return this.$store.state.inputDialog;
+    },
+    currentPost() {
+      return this.$store.state.currentPost;
+    },
+  },
+  watch: {
+    currentPost(newVal) {
+      if (newVal && this.$store.state.inputDialog) {
+        this.postData = { ...newVal };
+      } else {
+        Object.keys(this.postData).forEach(
+          (ele) => (this.postData[ele] = null)
+        );
+        this.$refs.form.reset();
+      }
+      console.log(this.postData);
     },
   },
   methods: {
@@ -152,24 +137,40 @@ export default {
     setDate() {
       this.postData.date = new Date();
     },
-    updateMessage() {
+    sendMessage() {
       const formValid = this.$refs.form.validate();
       if (formValid) {
-        this.setPostId();
-        this.setDate();
-        const finalData = { ...this.postData };
-        if (this.post) {
+        let finalData;
+        if (this.$store.state.currentPost) {
+          finalData = { ...this.postData };
           this.$store.dispatch("editPost", finalData);
+          // after you edit the post, if PostDialog is open update the currentPost so it can be displayed in the PostDialog
+          if (this.$store.state.postDialog) {
+            this.$store.dispatch("updateCurrentPost", finalData);
+          } else {
+            this.$store.dispatch("clearCurrentPost");
+          }
         } else {
-          this.$store.dispatch("updateMessage", finalData);
+          // it is a new post and you need to set date and id
+          this.setPostId();
+          this.setDate();
+          finalData = { ...this.postData };
+          this.$store.dispatch("addNewPost", finalData);
+          console.log(finalData);
         }
         this.closeInputDialog();
-        // this.dialog = false;
         this.$refs.form.reset();
       }
     },
     closeInputDialog() {
       this.$store.dispatch("closeInputDialog");
+      // if PostDialog is not open you don't need currentPost
+      if (!this.$store.state.postDialog) {
+        this.$store.dispatch("clearCurrentPost");
+      }
+    },
+    clearCurrentPost() {
+      this.$store.dispatch("clearCurrentPost");
     },
   },
 };

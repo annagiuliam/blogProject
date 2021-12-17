@@ -5,7 +5,7 @@
         <v-row class="d-flex justify-space-between align-center">
           <v-col>
             <div class="text-overline mb-1">
-              {{ post.category }}
+              {{ displayedPost.category }}
             </div></v-col
           >
           <v-col class="d-flex justify-end align-center max-width pa-1">
@@ -20,7 +20,14 @@
               <v-icon>mdi-delete-outline</v-icon>
             </v-btn>
 
-            <v-btn outlined fab color="indigo" x-small class="ma-2">
+            <v-btn
+              outlined
+              fab
+              color="indigo"
+              x-small
+              class="ma-2"
+              @click="editPost"
+            >
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
 
@@ -38,11 +45,13 @@
           </v-col>
         </v-row>
         <v-list-item-title class="text-h5 mb-1">
-          {{ post.title }}
+          {{ displayedPost.title }}
         </v-list-item-title>
         <v-row justify="space-between">
           <v-col>
-            <v-list-item-subtitle>{{ post.author }}</v-list-item-subtitle>
+            <v-list-item-subtitle>{{
+              displayedPost.author
+            }}</v-list-item-subtitle>
           </v-col>
           <v-col>
             <v-list-item-subtitle class="text-right">{{
@@ -52,7 +61,7 @@
         </v-row>
       </v-list-item-content>
     </v-list-item>
-    <v-card-text :class="textClass">{{ post.content }}</v-card-text>
+    <v-card-text :class="textClass">{{ displayedPost.content }}</v-card-text>
   </v-container>
 </template>
 
@@ -68,25 +77,44 @@ export default {
   props: ["post", "elip"],
   computed: {
     formattedDate() {
-      return this.post.date.toLocaleDateString(undefined, this.dateOptions);
+      return this.displayedPost.date.toLocaleDateString(
+        undefined,
+        this.dateOptions
+      );
     },
     textClass() {
       let className = this.elip ? "text-elip" : "";
       return className;
     },
+    currentPost() {
+      return this.$store.state.currentPost;
+    },
+    displayedPost() {
+      return this.post ? this.post : this.currentPost;
+    },
   },
   methods: {
     deletePost() {
-      this.$store.dispatch("deletePost", this.post);
-      this.closeDialog();
+      this.$store.dispatch("deletePost", this.displayedPost);
+      if (this.$store.state.postDialog) {
+        this.closePostDialog();
+      }
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
+      // this.$store.dispatch("clearCurrentPost");
     },
     clearCurrentPost() {
       this.$store.dispatch("updateCurrentPost", {});
     },
+    editPost() {
+      this.$store.dispatch("updateCurrentPost", this.displayedPost);
+      this.$store.dispatch("openInputDialog");
+    },
   },
+  // updated() {
+  //   console.log(this.displayedPost);
+  // },
 };
 </script>
 

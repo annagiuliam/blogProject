@@ -1,13 +1,8 @@
 <template>
   <div class="text-center">
     <v-dialog :value="dialog" width="500" @click:outside="closePostDialog">
-      <!-- <template v-slot:activator="{ on, attrs }">
-        <v-btn outlined color="indigo" v-bind="attrs" v-on="on" class="mb-5">
-          Lesen
-        </v-btn>
-      </template> -->
       <v-card>
-        <PostContent :post="currentPost" v-if="currentPost" />
+        <PostContent v-if="currentPost" />
       </v-card>
     </v-dialog>
   </div>
@@ -17,14 +12,9 @@
 import PostContent from "./PostContent.vue";
 export default {
   name: "PostDialog",
-  data() {
-    return {
-      // name: "PostDialog",
-    };
-  },
   computed: {
     dialog() {
-      return this.$store.state.postDialog;
+      return this.$store.state.postDialog && this.$store.state.currentPost;
     },
     currentPost() {
       return this.$store.state.currentPost;
@@ -40,7 +30,6 @@ export default {
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
-      this.$store.dispatch("clearCurrentPost");
     },
   },
 };

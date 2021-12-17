@@ -82,17 +82,11 @@ export default {
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
-      this.$store.dispatch("clearCurrentPost");
-      // this.clearCurrentPost();
     },
     clearCurrentPost() {
       this.$store.dispatch("updateCurrentPost", {});
     },
   },
-  // updated() {
-  //   this.clearCurrentPost();
-  //   console.log(this.$store.state.currentPost);
-  // },
 };
 </script>
 

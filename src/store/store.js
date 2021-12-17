@@ -42,7 +42,6 @@ export const store = new Vuex.Store({
     closePostDialog: (state) => {
       state.postDialog = false;
       console.log(state.postDialog);
-      // this.clearCurrentPost();
     },
     openInputDialog: (state) => {
       state.inputDialog = true;
@@ -54,12 +53,6 @@ export const store = new Vuex.Store({
       console.log(state.inputDialog);
     },
     clearCurrentPost: (state) => {
-      // if (state.currentPost) {
-      //   Object.keys(state.currentPost).forEach(
-      //     (ele) => (state.currentPost[ele] = "")
-      //   );
-      //   console.log(state.currentPost);
-      // }
       state.currentPost = null;
       console.log(state.currentPost);
     },
@@ -86,15 +79,13 @@ export const store = new Vuex.Store({
     },
     closePostDialog: ({ commit }) => {
       commit("closePostDialog");
+      commit("clearCurrentPost");
     },
     openInputDialog: ({ commit }) => {
       commit("openInputDialog");
     },
     closeInputDialog: ({ commit }) => {
       commit("closeInputDialog");
-    },
-    clearCurrentPost: ({ commit }) => {
-      commit("clearCurrentPost");
     },
   },
 });

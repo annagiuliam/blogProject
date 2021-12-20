@@ -11,10 +11,9 @@
 <script>
 import PostContent from "./PostContent.vue";
 export default {
-  name: "PostDialog",
   computed: {
     dialog() {
-      return this.$store.state.postDialog && this.$store.state.currentPost;
+      return this.$store.state.postDialog;
     },
     currentPost() {
       return this.$store.state.currentPost;
@@ -25,9 +24,6 @@ export default {
   },
   props: ["post"],
   methods: {
-    deletePost() {
-      this.$store.dispatch("deletePost", this.post);
-    },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
     },

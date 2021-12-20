@@ -20,7 +20,7 @@
       </div>
     </v-container>
 
-    <v-container>
+    <v-container class="mb-5">
       <v-row wrap>
         <v-col cols="12" md="4" v-for="post in filteredPosts" :key="post.id">
           <PostTile :post="post" :elip="true" />

@@ -8,7 +8,7 @@
               {{ displayedPost.category }}
             </div></v-col
           >
-          <v-col class="d-flex justify-end align-center max-width pa-1">
+          <v-col class="d-flex justify-end align-center pa-1">
             <v-btn
               outlined
               fab
@@ -71,7 +71,6 @@ export default {
   data() {
     return {
       dateOptions: { year: "numeric", month: "long", day: "numeric" },
-      name: "PostContent",
     };
   },
   props: ["post", "elip"],
@@ -102,19 +101,12 @@ export default {
     },
     closePostDialog() {
       this.$store.dispatch("closePostDialog");
-      // this.$store.dispatch("clearCurrentPost");
-    },
-    clearCurrentPost() {
-      this.$store.dispatch("updateCurrentPost", {});
     },
     editPost() {
       this.$store.dispatch("updateCurrentPost", this.displayedPost);
       this.$store.dispatch("openInputDialog");
     },
   },
-  // updated() {
-  //   console.log(this.displayedPost);
-  // },
 };
 </script>
 
@@ -123,8 +115,5 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.max-width {
-  max-width: 150px;
 }
 </style>

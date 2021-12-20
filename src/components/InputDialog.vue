@@ -1,5 +1,5 @@
 <template>
-  <v-container class="auto-width">
+  <v-container>
     <v-row>
       <v-dialog
         :value="dialog"
@@ -119,10 +119,12 @@ export default {
       if (newVal && this.$store.state.inputDialog) {
         this.postData = { ...newVal };
       } else {
-        Object.keys(this.postData).forEach(
-          (ele) => (this.postData[ele] = null)
-        );
+        // Object.keys(this.postData).forEach(
+        //   (ele) => (this.postData[ele] = null)
+        // );
         this.$refs.form.reset();
+        this.postData.date = null;
+        this.postData.id = null;
       }
       console.log(this.postData);
     },
@@ -169,15 +171,8 @@ export default {
         this.$store.dispatch("clearCurrentPost");
       }
     },
-    clearCurrentPost() {
-      this.$store.dispatch("clearCurrentPost");
-    },
   },
 };
 </script>
 
-<style>
-.container.auto-width {
-  width: auto;
-}
-</style>
+<style></style>

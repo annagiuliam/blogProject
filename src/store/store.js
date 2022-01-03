@@ -14,10 +14,10 @@ export const store = new Vuex.Store({
   },
 
   mutations: {
-    addNewPost: (state, payload) => {
-      state.posts.push(payload);
-      console.log("addNewPost", state.posts);
-    },
+    // addNewPost: (state, payload) => {
+    //   state.posts.push(payload);
+    //   console.log("addNewPost", state.posts);
+    // },
     deletePost: (state, payload) => {
       let filteredPosts = state.posts.filter((ele) => ele.id !== payload.id);
       state.posts = [...filteredPosts];

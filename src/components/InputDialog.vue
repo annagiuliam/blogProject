@@ -119,12 +119,10 @@ export default {
       if (newVal && this.$store.state.inputDialog) {
         this.postData = { ...newVal };
       } else {
-        // Object.keys(this.postData).forEach(
-        //   (ele) => (this.postData[ele] = null)
-        // );
-        this.$refs.form.reset();
-        this.postData.date = null;
-        this.postData.id = null;
+        Object.keys(this.postData).forEach((ele) => (this.postData[ele] = ""));
+        // this.$refs.form.reset();
+        // this.postData.date = null;
+        // this.postData.id = null;
       }
       console.log(this.postData);
     },
